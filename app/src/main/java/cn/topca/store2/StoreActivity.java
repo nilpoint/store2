@@ -40,13 +40,40 @@ public class StoreActivity extends AppCompatActivity {
         mUIGetButton = (Button) findViewById(R.id.uiGetValueButton);
         mUIGetButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View pView) {
-                displayMessage("GetButton Clicked");
+                // 10. Retrieves key and type entered by the user.
+                String key = mUIKeyEdit.getText().toString();
+                StoreType type = (StoreType) mUITypeSpinner
+                        .getSelectedItem();
+
+                // Retrieves value from the store and displays it.
+                // Each data type has its own access method.
+                switch (type) {
+                    case String:
+                        mUIValueEdit.setText(getString(key));
+                        break;
+                }
             }
         });
         mUISetButton = (Button) findViewById(R.id.uiSetValueButton);
         mUISetButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View pView) {
-                displayMessage("SetButton Clicked");
+                // 9. Retrieves key and type entered by the user.
+                String key = mUIKeyEdit.getText().toString();
+                String value = mUIValueEdit.getText().toString();
+                StoreType type = (StoreType) mUITypeSpinner
+                        .getSelectedItem();
+
+                // Parses user entered value and saves it in the store.
+                // Each data type has its own access method.
+                try {
+                    switch (type) {
+                        case String:
+                            setString(key, value);
+                            break;
+                    }
+                } catch (Exception eException) {
+                    displayMessage("Incorrect value.");
+                }
             }
         });
 
