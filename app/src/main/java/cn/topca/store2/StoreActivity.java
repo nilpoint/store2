@@ -3,6 +3,7 @@ package cn.topca.store2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -17,6 +18,9 @@ public class StoreActivity extends AppCompatActivity {
 
     // 3. Declare two buttons
     private Button mUIGetButton, mUISetButton;
+
+    // 6. Declare a spinner element
+    private Spinner mUITypeSpinner;
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -45,6 +49,17 @@ public class StoreActivity extends AppCompatActivity {
                 displayMessage("SetButton Clicked");
             }
         });
+
+        // 7. Fill the spinner
+        ArrayAdapter<StoreType> adapter =
+                new ArrayAdapter<StoreType>(this,
+                        android.R.layout.simple_spinner_item,
+                        StoreType.values());
+        adapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
+        mUITypeSpinner = (Spinner) findViewById(
+                R.id.uiTypeSpinner);
+        mUITypeSpinner.setAdapter(adapter);
     }
 
     // 5. Display a message
