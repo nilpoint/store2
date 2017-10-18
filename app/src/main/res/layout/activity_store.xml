@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.topca.store2.StoreActivity">
-
+    tools:context="cn.topca.store2.StoreActivity"
+    android:orientation="vertical">
     <TextView
-        android:id="@+id/sample_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Save or retrieve a value from the store:"/>
 
-</android.support.constraint.ConstraintLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+        <TableRow>
+            <TextView android:id="@+id/uiKeyLabel" android:text="Key : " />
+            <EditText android:id="@+id/uiKeyEdit" ><requestFocus /></EditText>
+        </TableRow>
+        <TableRow>
+            <TextView android:id="@+id/uiValueLabel" android:text="Value : " />
+            <EditText android:id="@+id/uiValueEdit" />
+        </TableRow>
+        <TableRow>
+            <TextView android:id="@+id/uiTypeLabel" android:layout_height="match_parent"
+                android:gravity="center_vertical" android:text="Type : " />
+            <Spinner android:id="@+id/uiTypeSpinner" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right">
+        <Button android:id="@+id/uiGetValueButton" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Get Value" />
+        <Button android:id="@+id/uiSetValueButton" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Set Value" />
+    </LinearLayout>
+
+</LinearLayout>
