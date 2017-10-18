@@ -66,4 +66,8 @@ public class StoreActivity extends AppCompatActivity {
     private void displayMessage(String pMessage) {
         Toast.makeText(this, pMessage, Toast.LENGTH_LONG).show();
     }
+
+    // 8. Declare store interface from C
+    public native String getString(String pKey);
+    public native void setString(String pKey, String pString);
 }
